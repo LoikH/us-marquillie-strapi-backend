@@ -1,0 +1,53 @@
+{
+    "kind": "collectionType",
+    "collectionName": "matches",
+    "info": {
+        "singularName": "match",
+        "pluralName": "matches",
+        "displayName": "Match"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "EquipeDomicile": {
+            "type": "string",
+            "required": true
+        },
+        "EquipeExterieur": {
+            "type": "string"
+        },
+        "DateMatch": {
+            "type": "date",
+            "required": true
+        },
+        "HeureMatch": {
+            "type": "time",
+            "required": true
+        },
+        "Competition": {
+            "type": "string"
+        },
+        "ScoreDomicile": {
+            "type": "integer"
+        },
+        "ScoreExterieur": {
+            "type": "integer"
+        },
+        "EstJoue": {
+            "type": "boolean",
+            "default": false
+        },
+        "ImageMatch": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        }
+    }
+}

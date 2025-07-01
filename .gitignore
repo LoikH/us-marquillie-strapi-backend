@@ -1,0 +1,20 @@
+# Fichiers de dépendances
+/node_modules
+
+# Fichiers de build et de cache
+/build
+/.cache
+/.tmp
+
+# Fichier d'environnement (TRÈS IMPORTANT - CONTIENT DES SECRETS)
+.env
+
+# Fichiers de base de données SQLite
+data.db
+*.db
+
+# Logs
+*.log
+
+# Fichiers de l'éditeur
+.vscode/

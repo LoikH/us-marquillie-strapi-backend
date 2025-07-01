@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "classements",
+  "info": {
+    "singularName": "classement",
+    "pluralName": "classements",
+    "displayName": "Classement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Competition": {
+      "type": "string"
+    },
+    "Position": {
+      "type": "integer",
+      "required": true
+    },
+    "NomEquipe": {
+      "type": "string",
+      "required": true
+    },
+    "Points": {
+      "type": "integer",
+      "required": true
+    },
+    "Joues": {
+      "type": "integer",
+      "required": true
+    },
+    "Gagnes": {
+      "type": "integer",
+      "required": true
+    },
+    "Nuls": {
+      "type": "integer",
+      "required": true
+    },
+    "Perdus": {
+      "type": "integer",
+      "required": true
+    },
+    "ButsContre": {
+      "type": "integer",
+      "required": true
+    },
+    "ButsPour": {
+      "type": "integer",
+      "required": true
+    },
+    "DifferenceButs": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}
