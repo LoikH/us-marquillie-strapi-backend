@@ -11,9 +11,6 @@
     },
     "pluginOptions": {},
     "attributes": {
-        "Competition": {
-            "type": "string"
-        },
         "Position": {
             "type": "integer",
             "required": true
@@ -42,17 +39,22 @@
             "type": "integer",
             "required": true
         },
-        "ButsContre": {
+        "ButsPour": {
             "type": "integer",
             "required": true
         },
-        "ButsPour": {
+        "ButsContre": {
             "type": "integer",
             "required": true
         },
         "DifferenceButs": {
             "type": "integer",
             "required": true
+        },
+        "competition": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::competition.competition"
         }
     }
 }

@@ -456,7 +456,10 @@ export interface ApiClassementClassement extends Struct.CollectionTypeSchema {
   attributes: {
     ButsContre: Schema.Attribute.Integer & Schema.Attribute.Required;
     ButsPour: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Competition: Schema.Attribute.String;
+    competition: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::competition.competition'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -474,6 +477,64 @@ export interface ApiClassementClassement extends Struct.CollectionTypeSchema {
     Perdus: Schema.Attribute.Integer & Schema.Attribute.Required;
     Points: Schema.Attribute.Integer & Schema.Attribute.Required;
     Position: Schema.Attribute.Integer & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiClubClub extends Struct.SingleTypeSchema {
+  collectionName: 'clubs';
+  info: {
+    displayName: 'Club';
+    pluralName: 'clubs';
+    singularName: 'club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Adresse: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email;
+    Histoire: Schema.Attribute.Blocks;
+    LienCarte: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Telephone: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCompetitionCompetition extends Struct.CollectionTypeSchema {
+  collectionName: 'competitions';
+  info: {
+    displayName: 'Competition';
+    pluralName: 'competitions';
+    singularName: 'competition';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    equipe: Schema.Attribute.Relation<'oneToOne', 'api::equipe.equipe'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::competition.competition'
+    > &
+      Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -523,7 +584,10 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Competition: Schema.Attribute.String;
+    competition: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::competition.competition'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1059,6 +1123,8 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::classement.classement': ApiClassementClassement;
+      'api::club.club': ApiClubClub;
+      'api::competition.competition': ApiCompetitionCompetition;
       'api::equipe.equipe': ApiEquipeEquipe;
       'api::match.match': ApiMatchMatch;
       'plugin::content-releases.release': PluginContentReleasesRelease;

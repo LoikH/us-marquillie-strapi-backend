@@ -26,9 +26,6 @@
             "type": "time",
             "required": true
         },
-        "Competition": {
-            "type": "string"
-        },
         "ScoreDomicile": {
             "type": "integer"
         },
@@ -48,6 +45,11 @@
                 "videos",
                 "audios"
             ]
+        },
+        "competition": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::competition.competition"
         }
     }
 }
