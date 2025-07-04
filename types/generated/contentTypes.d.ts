@@ -484,35 +484,6 @@ export interface ApiClassementClassement extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiClubClub extends Struct.SingleTypeSchema {
-  collectionName: 'clubs';
-  info: {
-    displayName: 'Club';
-    pluralName: 'clubs';
-    singularName: 'club';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Adresse: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Email: Schema.Attribute.Email;
-    Histoire: Schema.Attribute.Blocks;
-    LienCarte: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Telephone: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCompetitionCompetition extends Struct.CollectionTypeSchema {
   collectionName: 'competitions';
   info: {
@@ -1123,7 +1094,6 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::classement.classement': ApiClassementClassement;
-      'api::club.club': ApiClubClub;
       'api::competition.competition': ApiCompetitionCompetition;
       'api::equipe.equipe': ApiEquipeEquipe;
       'api::match.match': ApiMatchMatch;
